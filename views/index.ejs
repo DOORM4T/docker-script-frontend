@@ -8,14 +8,14 @@
 </head>
 
 <body>
-    <h1>Active: <span class="">False</span></h1>
+    <h1>Active: <span class=""><%= isServerOpen %></span></h1>
     <form action="/toggle-server-state" method="POST">
         <input id="username" type="text">
         <input id="password" type="password">
-        <button></button>
+    <button id="toggle">toggle</button>
     </form>
 
-    <script src="main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
