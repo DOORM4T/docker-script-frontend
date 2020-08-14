@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <h1>Active: <span class=""><%= isServerOpen %></span></h1>
-    <form action="/toggle-server-state" method="POST">
+    <h1>Status: <span id="status-message" class=""></span></h1>
+    <form id="form" action="/toggle-server-state" method="POST">
         <input id="username" type="text">
         <input id="password" type="password">
     <button id="toggle">toggle</button>
