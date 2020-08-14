@@ -6,10 +6,8 @@
 if [ `ps aux | grep -i java | wc | awk '{print $1}'` -eq "0" ] 
     then 
         server_is_up=0
-        echo "0" > "server_is_up.txt"; 
     else 
         server_is_up=1
-        echo "1" > "server_is_up.txt";
 fi
 
 if [ $server_is_up == "0" ]
@@ -25,12 +23,12 @@ if [ $server_is_up == "0" ]
             then 
                 for pid in `ps aux | grep -i java | awk '{print $4}'`   # Get Windows process ID of Minecraft Server; on Windows with Git Bash
                 do
-                    TASKKILL //PID "$pid"                           # Kill in Windows
+                    TASKKILL //PID "$pid"                               # Kill in Windows
                 done
             else 
                 for pid in `ps aux | grep -i java | awk '{print $2}'`   # Get process ID of Minecraft Server; on a Linux system (tested on Ubuntu & CentOS)
                 do
-                    kill -2 "$pid"                                          # Kill the Minecraft Server (NOT FORCE KILL; -2 = SIGINT/interrupt)
+                    kill -2 "$pid"                                      # Kill the Minecraft Server (NOT FORCE KILL; -2 = SIGINT/interrupt)
                 done
         fi
 

@@ -5,15 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Script Activator-inator</title>
+    <link rel="stylesheet" href="/css">
 </head>
 
-<body>
-    <h1>Status: <span id="status-message" class=""></span></h1>
-    <form id="form" action="/toggle-server-state" method="POST">
-        <input id="username" type="text">
-        <input id="password" type="password">
-    <button id="toggle">toggle</button>
-    </form>
+<body class="bg-gray-800">
+    <h1 class="text-xl text-center fixed top-0 left-0 right-0 bg-green-400 py-4 font-bold">Status: <span id="status-message"></span></h1>
+    <div class="w-full p-16 mt-24 flex flex-col md:flex-row" style="height:80vh">
+        <form id="form" action="/toggle-server-state" method="POST" class="flex flex-col md:flex-1 justify-evenly max-w-md bg-white p-8 shadow-xl mx-auto md:ml-16 h-64 rounded shadow-inner">
+            <h2 class="text-center font-bold text-3xl mb-4">Toggle Server</h2>
+            <div class="flex flex-row">
+                <label  for="username" class="flex justify-center align-middle mt-4 w-16">
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="user w-6 h-6"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                </label>
+                <input id="username" type="text" class="border-2 border-gray-900 px-2 text-xl py-2 rounded mt-2 w-full">
+            </div>
+            <div class="flex flex-row">
+                <label  for="password" class="flex justify-center align-middle mt-4 w-16">
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="lock-open w-6 h-6"><path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z"></path></svg>
+                </label>
+                <input id="password" type="text" class="border-2 border-gray-900 px-2 text-xl py-2 rounded mt-2 w-full">
+            </div>
+            <button id="toggle" class="bg-red-400 hover:bg-red-300 border-red-500 my-4 text-lg ml-auto font-black tracking-wider rounded border-b-8  text-white transition-all duration-150 px-4 py-2" >Start</button>
+        </form>
+        <aside class="overflow-y-scroll bg-white border-2 border-gray-800 p-4 mx-auto flex-1 mt-16 md:mt-0 md:ml-16 h-full rounded shadow-inner w-full">
+            <h2 class="text-center font-bold text-3xl mb-2">Server Logs 
+                <button id="refresh-log" class="inline-flex justify-center align-middle text-green-500">
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="refresh w-6 h-6"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"></path></svg>
+                </button>
+            </h2>
+            <pre id="logs" class="font-mono"></pre>
+        </aside>
+    </div>
 
     <script src="/js/main.js"></script>
 </body>

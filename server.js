@@ -21,7 +21,9 @@ function toggleServerState() {
  * ROUTES
  */
 
+app.use("/log", express.static("logs/latest.log"));
 app.use("/js", express.static("js"));
+app.use("/css", express.static("css/output.css"));
 app.use("/status", express.static(`${__dirname}/server_is_up.txt`));
 
 app.set("view engine", "ejs");
