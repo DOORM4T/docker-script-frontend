@@ -12,11 +12,11 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 const { spawn } = require("child_process");
 
 function toggleServerState() {
-  spawn("sh", ["toggle_server_state.sh"]);
+  spawn("bash", ["toggle_server_state.sh"]);
 }
 
 function refreshServerStatus() {
-  spawn("sh", ["refresh_status.sh"]);
+  spawn("bash", ["refresh_status.sh"]);
 }
 
 /**
