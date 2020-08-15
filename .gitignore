@@ -11,4 +11,13 @@ server.properties
 usercache.json
 whitelist.json
 
+mods 
+minecraft_server.1.12.2.jar
+forge-1.12.2-14.23.5.2847-universal.jar
+libraries
+config
+.mixin.out
+llibrary
+
 members.json
+
