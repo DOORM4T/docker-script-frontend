@@ -10,3 +10,5 @@ sample_server.jar
 server.properties
 usercache.json
 whitelist.json
+
+members.json

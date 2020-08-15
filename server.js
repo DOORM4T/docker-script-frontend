@@ -1,6 +1,9 @@
 const path = require("path");
+const fs = require("fs");
 const express = require("express");
 const app = express();
+
+app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
@@ -32,8 +35,23 @@ app.get("/", (_, res) => {
   res.render("index");
 });
 
-app.post("/toggle-server-state", (_, res) => {
+const readMembers = fs.readFileSync(`${__dirname}/members.json`);
+const allowedUsers = JSON.parse(readMembers.toString());
+const allowedUsernames = Object.keys(allowedUsers);
+
+app.post("/toggle-server-state", (req, res) => {
+  const { username, password } = req.body;
+  console.log(req.body);
+
+  const userExists = allowedUsernames.some((name) => name === username);
+  const correctPassword = allowedUsers[username] === password;
+  console.log(userExists, correctPassword);
+
+  if (!userExists || !correctPassword)
+    return res.status(403).send("Invalid credentials.");
+
   toggleServerState();
+
   res.redirect("/");
 });
 

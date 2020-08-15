@@ -45,21 +45,57 @@ setTimeout(() => {
   })();
 }, 10);
 
+const usernameInput = document.querySelector("input[name=username]");
+usernameInput.focus();
+
+const passwordInput = document.querySelector("input[name=password]");
+const inputs = [usernameInput, passwordInput];
+inputs.forEach((input) => {
+  input.addEventListener("focus", (e) => {
+    e.target.classList.remove("border-red-500");
+  });
+});
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const username = form["username"].value;
+  const password = form["password"].value;
+
+  // Validate input
+  if (username === "" || password === "") {
+    if (username === "") usernameInput.classList.add("border-red-500");
+    if (password === "") passwordInput.classList.add("border-red-500");
+    return;
+  }
+
   toggleButton.setAttribute("disabled", "true");
+
+  // Request server state toggle
+  const requestBody = JSON.stringify({ username, password });
+  const response = await fetch("/toggle-server-state", {
+    method: "POST",
+    body: requestBody,
+    headers: { "Content-Type": "application/json" },
+  });
+
+  // Stop if invalid request (e.g. bad login)
+  if (response.status !== 200) {
+    alert(await response.text());
+    window.location.reload();
+  }
+
+  // Loading visuals
   toggleButton.classList.remove("active");
   toggleButton.classList.remove("inactive");
   toggleButton.innerHTML = "LOADING...";
   progressBar.classList.remove("hidden");
 
-  await fetch("/toggle-server-state", { method: "POST" });
-
   const progressInterval = setInterval(() => {
-    progressBar.value += progressBar.max/5000*10;
+    progressBar.value += (progressBar.max / 5000) * 10;
   }, 10);
 
   setTimeout(() => {
+    clearInterval(progressInterval);
     window.location.reload();
   }, 5000);
 });
