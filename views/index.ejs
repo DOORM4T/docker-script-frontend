@@ -40,8 +40,10 @@
                         class="border-2 border-gray-900 px-2 text-xl py-2 rounded mt-2 w-full">
                 </div>
                 <button id="toggle"
-                    class="bg-gray-400 border-gray-500 my-4 text-lg ml-auto font-black tracking-wider rounded border-b-8 text-white transition-all duration-150 px-4 py-2" data-aos="zoom-in" data-aos-delay="600">LOADING...</button>
-                <progress id="progress-bar" class="hidden absolute w-full left-0 right-0 bottom-0 h-2 bg-gray-800" value="0" max="100"></progress>
+                    class="bg-gray-400 border-gray-500 my-4 text-lg ml-auto font-black tracking-wider rounded border-b-8 text-white transition-all duration-150 px-4 py-2"
+                    data-aos="zoom-in" data-aos-delay="600">LOADING...</button>
+                <progress id="progress-bar" class="hidden absolute w-full left-0 right-0 bottom-0 h-2 bg-gray-800"
+                    value="0" max="100"></progress>
 
             </form>
         </main>
@@ -63,7 +65,7 @@
     <script src="/js/main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ once: true });
     </script>
 </body>
 
