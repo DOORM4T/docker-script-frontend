@@ -12,12 +12,10 @@ fi
 
 if [ $server_is_up == "0" ]
     then
-        echo "1" > "server_is_up.txt";
         echo "Server is now running."
         java -Xmx8G -Xms2G -jar sample_server.jar #nogui # Change 'sample_server.jar' to the correct jar file name in production
     else 
         echo "Turned off server."                      
-        echo "0" > "server_is_up.txt";
         os=`uname`
         if [ "$os" == "MINGW64_NT-10.0" ]
             then 

@@ -5,17 +5,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 
-
-
-/** run bash script */
+/** run bash script child processes */
 const { spawn } = require("child_process");
 
 function toggleServerState() {
   spawn("sh", ["toggle_server_state.sh"]);
 }
 
-
-
+function refreshServerStatus() {
+  spawn("sh", ["refresh_status.sh"]);
+}
 
 /**
  * ROUTES
@@ -29,9 +28,9 @@ app.use("/status", express.static(`${__dirname}/server_is_up.txt`));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.get("/", (_, res) => {
+  refreshServerStatus();
   res.render("index");
 });
-
 
 app.post("/toggle-server-state", (_, res) => {
   toggleServerState();
