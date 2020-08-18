@@ -12,7 +12,17 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));
 const { spawn } = require("child_process");
 
 function toggleServerState() {
-  spawn("bash", ["toggle_server_state.sh"]);
+  const toggleScript = spawn("bash", ["toggle_server_state.sh"], {
+    cwd: __dirname,
+    detached:true,
+  });
+
+  toggleScript.on('error', (code, signal) => {
+    console.log(code, signal)
+  })
+  toggleScript.on('close', (err) => {
+    console.error(err)
+  })
 }
 
 function refreshServerStatus() {

@@ -13,7 +13,7 @@ fi
 if [ $server_is_up == "0" ]
     then
         echo "Server is now running."
-        java -Xmx8G -Xms2G -jar sample_server.jar #nogui # Change 'sample_server.jar' to the correct jar file name in production
+        java -Xmx8G -Xms2G -jar forge-1.12.2-14.23.5.2847-universal.jar > stuff.log #sample_server.jar #nogui # Change 'sample_server.jar' to the correct jar file name in production
     else 
         echo "Turned off server."                      
         os=`uname`
