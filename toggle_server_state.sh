@@ -3,6 +3,7 @@
 # check if server is running
 # update status file so UI frontend displays the correct status message
 #   - in case the server is closed independently of the web frontend, such as killing it in the command line
+# CHANGE GREP TO PGREP IN VM
 if [ `ps aux | grep -i java | wc | awk '{print $1}'` -eq "0" ] 
     then 
         server_is_up=0
