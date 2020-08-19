@@ -18,6 +18,7 @@ libraries
 config
 .mixin.out
 llibrary
+crash-reports
 
 members.json
 
