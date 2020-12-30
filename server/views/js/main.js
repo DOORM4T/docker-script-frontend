@@ -91,7 +91,8 @@ form.addEventListener("submit", async (e) => {
   progressBar.classList.remove("hidden")
 
   // delay accounting for time for server to start the command
-  const DELAY = 1000
+  // TODO: display progress bar resembling to actual progress
+  const DELAY = 10_000
   const progressInterval = setInterval(() => {
     progressBar.value += (progressBar.max / DELAY) * 10
   }, 10)

@@ -15,8 +15,7 @@ if [ $is_up == "0" ]
         cd "./script_dependencies"
         echo `pwd`
         echo "Starting: $command"
-        `$command`
-        echo "success"
+        $command
     else # stop the command if it is already running
         pkill -2 "$command_name"
         echo "Stopped."                      

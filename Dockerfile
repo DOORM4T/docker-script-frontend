@@ -1,10 +1,18 @@
 FROM doormat/ubuntu-openjdk8-node12:1.0.0 as builder
 
-EXPOSE 3000 25565
-
-WORKDIR /app
-COPY . .
+WORKDIR /src
+COPY package.json .
+COPY server/views/css/styles.css server/views/css/styles.css
 
 RUN npm install
 RUN npm run build-css
-ENTRYPOINT [ "npm", "run", "start" ]
+
+FROM doormat/ubuntu-openjdk8-node12:1.0.0
+
+EXPOSE 3000 25565
+CMD [ "npm", "start" ]
+
+WORKDIR /app
+COPY . .
+COPY --from=builder /src .
+

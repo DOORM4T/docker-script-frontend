@@ -1,8 +1,8 @@
+node_modules
+
 server/views/css/output.css
 server/scripts/logs/output.log
 
-node_modules
-
-server/scripts/script_dependencies/*
 server/scripts/logs/*
+# server/scripts/script_dependencies/*
 
