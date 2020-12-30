@@ -1,6 +1,6 @@
 FROM doormat/ubuntu-openjdk8-node12:1.0.0 as builder
 
-EXPOSE 3000
+EXPOSE 3000 25565
 
 WORKDIR /app
 COPY . .
