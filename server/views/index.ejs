@@ -12,10 +12,10 @@
 <body class="bg-gray-800 overflow-x-hidden">
     <h1 class="text-xl text-center fixed top-0 left-0 right-0 py-4 font-bold shadow-lg transform transition-transform duration-500 bg-yellow-400 hover:bg-yellow-500"
         data-aos="slide-down" data-aos-delay="200">Status: <span id="status-message">FETCHING DETAILS...</span></h1>
-    <div class="w-full p-16 mt-24 flex flex-col md:flex-row" style="height:80vh">
+    <div class="w-full p-16 mt-24 flex flex-row justify-center" style="height:80vh">
         <main>
             <form id="form" action="/toggle-server-state" method="POST"
-                class="flex flex-col md:flex-1 justify-evenly max-w-md bg-white p-8 shadow-xl mx-auto md:ml-16 rounded shadow-inner pt-16"
+                class="flex flex-col max-w-md bg-white px-8 shadow-xl mx-auto rounded shadow-inner pt-16"
                 style="height:20rem" data-aos="zoom-in">
                 <h2 class="text-center font-bold text-3xl mb-4">Server Control</h2>
                 <div class="flex flex-row" data-aos="flip-down" data-aos-delay="200">
@@ -47,20 +47,6 @@
 
             </form>
         </main>
-        <aside
-            class="overflow-y-scroll bg-white border-2 border-gray-800 p-4 mx-auto flex-1 mt-16 md:mt-0 md:ml-16 h-full rounded shadow-inner w-full"
-            data-aos="zoom-out">
-            <h2 class="text-center font-bold text-3xl mb-2 pt-6">Server Logs
-                <button id="refresh-log" class="inline-flex justify-center align-middle">
-                    <svg viewBox="0 0 20 20" fill="currentColor" class="refresh w-6 h-6">
-                        <path fill-rule="evenodd"
-                            d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </h2>
-            <pre id="logs" class="font-mono" data-aos="zoom-in" data-aos-delay="200"></pre>
-        </aside>
     </div>
     <script src="/js/main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
