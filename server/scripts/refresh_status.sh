@@ -1,6 +1,9 @@
 #!/bin/bash
+cd "/app/server/scripts/"
 command=`cat ./command.txt` # get the full command to run
 command_name=`echo "$command" | cut -d " " -f1` # get the name of the command (e.g. gets "java" from "java -jar ..."")
+
+echo "Grepping $command_name"
 
 # For updating the server status in is_up text file 
 # used when frontend refreshes

@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "/app/server/scripts/"
 command=`cat ./command.txt` # get the full command to run
 command_name=`echo "$command" | cut -d " " -f1` # get the name of the command (e.g. gets "java" from "java -jar ..."")
 
@@ -11,9 +12,11 @@ echo $is_up
 
 if [ $is_up == "0" ]
     then # run the command if it isn't already running
-        echo "Starting."
         cd "./script_dependencies"
-        $command > "./logs/output.log"
+        echo `pwd`
+        echo "Starting: $command"
+        `$command`
+        echo "success"
     else # stop the command if it is already running
         pkill -2 "$command_name"
         echo "Stopped."                      
