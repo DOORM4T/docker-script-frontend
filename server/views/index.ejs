@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Activator-inator</title>
+    <link rel="stylesheet" href="/css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body class="bg-gray-800 overflow-x-hidden">
+    <h1 class="text-xl text-center fixed top-0 left-0 right-0 py-4 font-bold shadow-lg transform transition-transform duration-500 bg-yellow-400 hover:bg-yellow-500"
+        data-aos="slide-down" data-aos-delay="200">Status: <span id="status-message">FETCHING DETAILS...</span></h1>
+    <div class="w-full p-16 mt-24 flex flex-row justify-center" style="height:80vh">
+        <main>
+            <form id="form" action="/toggle-server-state" method="POST"
+                class="flex flex-col max-w-md bg-white px-8 shadow-xl mx-auto rounded shadow-inner pt-16"
+                style="height:20rem" data-aos="zoom-in">
+                <h2 class="text-center font-bold text-3xl mb-4">Server Control</h2>
+                <div class="flex flex-row" data-aos="flip-down" data-aos-delay="200">
+                    <label for="username" class="flex justify-center align-middle mt-4 w-16">
+                        <svg viewBox="0 0 20 20" fill="currentColor" class="user w-6 h-6">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </label>
+                    <input id="username" name="username" type="text" placeholder="Member ID"
+                        class="border-2 border-gray-900 px-2 text-xl py-2 rounded mt-2 w-full">
+                </div>
+                <div class="flex flex-row" data-aos="flip-down" data-aos-delay="400">
+                    <label for="password" class="flex justify-center align-middle mt-4 w-16">
+                        <svg viewBox="0 0 20 20" fill="currentColor" class="lock-open w-6 h-6">
+                            <path
+                                d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z">
+                            </path>
+                        </svg>
+                    </label>
+                    <input id="password" name="password" type="password" placeholder="Password"
+                        class="border-2 border-gray-900 px-2 text-xl py-2 rounded mt-2 w-full">
+                </div>
+                <button id="toggle"
+                    class="bg-gray-400 border-gray-500 my-4 text-lg ml-auto font-black tracking-wider rounded border-b-8 text-white transition-all duration-150 px-4 py-2"
+                    data-aos="zoom-in" data-aos-delay="600">LOADING...</button>
+                <progress id="progress-bar" class="hidden absolute w-full left-0 right-0 bottom-0 h-2 bg-gray-800"
+                    value="0" max="100"></progress>
+
+            </form>
+        </main>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
+    </script>
+</body>
+
+</html>
