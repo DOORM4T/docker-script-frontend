@@ -1,5 +1,4 @@
 #!/bin/bash
-cd "/app/server/scripts/"
 command=`cat ./command.txt` # get the full command to run
 command_name=`echo "$command" | cut -d " " -f1` # get the name of the command (e.g. gets "java" from "java -jar ..."")
 
@@ -10,7 +9,7 @@ command_name=`echo "$command" | cut -d " " -f1` # get the name of the command (e
 is_up=`cat ./is_up.txt`
 echo $is_up
 
-if [ $is_up == "0" ]
+if [ "$is_up" == "0" ]
     then # run the command if it isn't already running
         cd "./script_dependencies"
         echo `pwd`

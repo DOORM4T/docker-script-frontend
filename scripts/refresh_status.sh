@@ -2,8 +2,6 @@
 # For updating the server status in is_up.txt file 
 # runs when frontend refreshes
 
-cd "/app/server/scripts/"
-
 # get the name of the command (e.g. gets "java" from "java -jar ..."")
 command=`cat ./command.txt` 
 command_name=`echo "$command" | cut -d " " -f1` 
