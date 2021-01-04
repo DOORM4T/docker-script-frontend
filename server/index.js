@@ -5,7 +5,7 @@ const express = require("express")
 const app = express()
 
 /* bash script-calling functions */
-const { refreshServerStatus, toggleServerState } = require("./helpers/scripts")
+const { refreshServerStatus, toggleServerState } = require("./scripts")
 
 /* view config */
 app.set("view engine", "ejs")
@@ -18,7 +18,10 @@ app.use(express.json())
  * ROUTES
  */
 app.use("/js", express.static(path.join(__dirname, "./views/js/")))
-app.use("/css", express.static(path.join(__dirname, "./views/css/output.css"))) /* remember to run the build-css script */
+app.use(
+  "/css",
+  express.static(path.join(__dirname, "./views/css/output.css")),
+) /* remember to run the build-css script */
 app.use("/status", express.static(path.join(__dirname, "../scripts/is_up.txt")))
 
 /* Main page */
@@ -30,9 +33,7 @@ app.get("/", (_, res) => {
 /**
  * Handle attempts to toggle the server
  */
-const allowList = fs.readFileSync(
-  path.join(__dirname, "../allow_list.json"),
-)
+const allowList = fs.readFileSync(path.join(__dirname, "../allow_list.json"))
 const allowedUsers = JSON.parse(allowList.toString())
 const allowedUsernames = Object.keys(allowedUsers)
 
