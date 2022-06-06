@@ -3,6 +3,10 @@ node_modules
 server/views/css/output.css
 server/scripts/logs/output.log
 
-server/scripts/logs/*
-# server/scripts/script_dependencies/*
+scripts/script_dependencies/*
+!scripts/script_dependencies/1.16.2.jar
+!scripts/script_dependencies/command.txt
+!scripts/script_dependencies/is_up.txt
+
+
 
