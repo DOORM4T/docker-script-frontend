@@ -7,7 +7,7 @@ services:
       - "25565:25565"
       - "25575:25575"
     volumes:
-            - type: bind
-              # "source" is the path to the host directory containing script dependencies
-              source: /home/script_dependencies
-              target: /app/scripts/script_dependencies
+      - type: bind
+        source: ./scripts/script_dependencies
+        target: /app/scripts/script_dependencies
+    restart: always
