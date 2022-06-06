@@ -1,22 +1,25 @@
-FROM doormat/ubuntu-openjdk8-node12:1.0.0 as builder
+FROM nginx:stable-alpine as host
 
 WORKDIR /src
 
-COPY package.json .
-COPY server/views/css/styles.css server/views/css/styles.css
+RUN apk update && apk upgrade
+RUN apk add bash
+
+RUN apk add openjdk8
+RUN apk add nodejs
+RUN apk add npm
+
+FROM host
+
+WORKDIR /app
+
+COPY . .
 
 RUN npm install
 RUN npm run build-css
 
-
-FROM doormat/ubuntu-openjdk8-node12:1.0.0
-
-RUN apt-get update
-RUN apt-get install vim -y
-
 EXPOSE 3000 25565 25575
+
 CMD [ "npm", "start" ]
 
-WORKDIR /app
-COPY . .
-COPY --from=builder /src .
+
